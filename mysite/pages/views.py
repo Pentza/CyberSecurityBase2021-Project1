@@ -23,7 +23,8 @@ def sendMessageView(request):
     receiver = request.POST.get('receiver')
     content = request.POST.get('message')
     
-    message_obj = Message.objects.create(sender=sender, receiver=receiver, message_content=content)
+    Message.objects.create(sender=sender, receiver=receiver, message_content=content)
+    
     return redirect('/')
 
 @login_required
