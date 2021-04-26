@@ -19,10 +19,12 @@ $ python manage.py runserver
 ```
 
 Default users:  
-`admin` : `admin`
+`admin` : `admin`  
+`test` : `strongpassword`
 
 
 ## **Flaws**
+
 ---
 
 ### [A7:2017](https://owasp.org/www-project-top-ten/2017/A7_2017-Cross-Site_Scripting_(XSS)) - Cross-Site Scripting (XSS)
