@@ -1,0 +1,60 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Hi {{ user.username }}!</h1>
+
+<h3>Your messages:</h3>
+{% if messages %}
+<table>
+  <tr>
+    <th>Content</th>
+    <th>From</th>
+  </tr>
+  {% for message in messages %}
+  <tr>
+    <td>
+      <textarea disabled readonly rows="5" cols="50">{{message.message_content}}</textarea>
+    </td>
+    <td>
+      {{message.sender}}
+      <form method="POST" action="delete_message/">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{message.id}}"/>
+        <input type="submit" value="Delete" />
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+
+
+
+
+<h3>Send message</h3>
+<form method="POST" action="send_message/">
+  {% csrf_token %}
+  <span>Receiver:</span><br />
+  <select name="receiver">
+    {% for user in users %}
+    <option value="{{user}}">{{user}}</option>
+    {% endfor %}
+  </select><br />
+
+  <span>Message:</span><br />
+  <textarea name="message" rows="5" cols="50"></textarea><br/>
+
+  <input type="submit" value="Send!" />
+</form>
+
+<p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
