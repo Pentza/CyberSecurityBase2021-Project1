@@ -41,6 +41,22 @@ Server crashes if you alter the injection in certain way, for example selecting 
 
 ---
 
+### [A2:2017](https://owasp.org/www-project-top-ten/2017/A2_2017-Broken_Authentication) - Broken Authentication
+
+The application permits automated attack, such as credential stuffing. Also application has default, well known `admin:admin` credentials. 
+
+I have included [hackpassword](https://github.com/Pentza/CyberSecurityBase2021-Project1/blob/main/hackpassword.py) tool above. It's a simple modified tool from course material that takes list of passwords and tries to log in with them. I have also provided example [password file](https://github.com/Pentza/CyberSecurityBase2021-Project1/blob/main/passwords.txt) with correct password in it. 
+
+To use this tool:
+```
+1. Make sure server is running on port 8000 (it's hard coded port for example reasons).
+2. Run 'python3 hackpassword.py'.
+3. If match we should get our password for 'admin' printed in the console.
+```
+**Fix:** When and when possible, implement multi-factor authentication. Don't use default credentials and implement weak-password checks (Django actually does this if using it's templates). 
+
+---
+
 ### [A7:2017](https://owasp.org/www-project-top-ten/2017/A7_2017-Cross-Site_Scripting_(XSS)) - Cross-Site Scripting (XSS)
 
 The application includes unvalidated and unescaped user input as part of HTML output. Attacker can send javascript code as a message to other users and execute it in the victim's browser.
