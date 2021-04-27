@@ -57,6 +57,21 @@ To use this tool:
 
 ---
 
+### [A3:2017](https://owasp.org/www-project-top-ten/2017/A3_2017-Sensitive_Data_Exposure) - Sensitive Data Exposure
+
+As this application has users and messages, the most sensitive data is user password. Using protocols like HTTP, data is trasmitted in plain text, thus making man-in-the-middle attacks possible. 
+
+We can see requests and responses from browser's dev tool. And as you log in you can see formed data in plain text. 
+
+```
+1. Open browsers dev tools and network tab (usually F12)
+2. Log in 
+3. In the network tab you should see POST request to '?next=/' and in the bottom below request headers you should see Form data and credentials in plain text. 
+```
+**Fix:** Use HTTPS -protocol
+
+---
+
 ### [A7:2017](https://owasp.org/www-project-top-ten/2017/A7_2017-Cross-Site_Scripting_(XSS)) - Cross-Site Scripting (XSS)
 
 The application includes unvalidated and unescaped user input as part of HTML output. Attacker can send javascript code as a message to other users and execute it in the victim's browser.
