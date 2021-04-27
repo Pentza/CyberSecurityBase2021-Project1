@@ -91,5 +91,13 @@ This will not be escaped: {{ data|safe }}
 
 ---
 
+### [A9:2017](https://owasp.org/www-project-top-ten/2017/A9_2017-Using_Components_with_Known_Vulnerabilities) - Using Components with Known Vulnerabilities
+
+Outdated components might have known security issues or they're unsupported. This application uses Djanjo 3.1.7 while latest is 3.2 (atm). This is't major security issue but it's worth mention. 
+
+**Fix:** Make sure to use supported and latest components and remove all unused stuff, for example  dependencies. 
+
+---
+
 
 
