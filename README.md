@@ -24,6 +24,19 @@ Default users:
 
 
 ## **Flaws**
+---
+
+### [A1:2017](https://owasp.org/www-project-top-ten/2017/A1_2017-Injection) - Injection
+
+User-supplied data in the search input is not validated by the application, thus making the SQL-injection possible. This is done in the application by using raw queries instead of Django's querysets.
+
+To get all of the messages in the database:
+```
+1. Log in as admin:admin or other user.
+2. Type "DOESNOTEXIST') UNION SELECT * FROM pages_message --"  in the seach bar
+3. Press search
+```
+**Fix:** Using Django's querysets as they're protected from SQL injection.
 
 ---
 
@@ -42,9 +55,7 @@ Using Django templates protects you against the majority of XSS attacks. Django 
 This will be escaped: {{ data }}
 This will not be escaped: {{ data|safe }}
 ```
-Fix: Sanitize data before including it in a page. 
-
-Read more about [Security in Django](https://docs.djangoproject.com/en/3.2/topics/security/)
+**Fix:** Sanitize data before including it in a page. 
 
 ---
 
