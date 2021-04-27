@@ -24,7 +24,6 @@ Default users:
 
 
 ## **Flaws**
----
 
 ### [A1:2017](https://owasp.org/www-project-top-ten/2017/A1_2017-Injection) - Injection
 
@@ -36,6 +35,8 @@ To get all of the messages in the database:
 2. Type "DOESNOTEXIST') UNION SELECT * FROM pages_message --"  in the seach bar
 3. Press search
 ```
+Server crashes if you alter the injection in certain way, for example selecting table that does not exist. 
+
 **Fix:** Using Django's querysets as they're protected from SQL injection.
 
 ---
