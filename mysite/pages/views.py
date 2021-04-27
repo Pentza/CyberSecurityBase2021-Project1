@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from .models import Message
 from django.contrib.auth.decorators import login_required
+from django.db import connection
 
 # Create your views here.
 
@@ -33,3 +34,16 @@ def deleteMessageView(request):
     message_to_delete = Message.objects.get(pk=id)
     message_to_delete.delete()
     return redirect('/')
+
+@login_required
+def searchMessageView(request):
+    search = request.GET['query']
+    
+    query = "SELECT * FROM pages_message WHERE receiver = '%s' AND (sender LIKE '%%%s%%' OR message_content LIKE '%%%s%%')" % (request.user,search,search)
+    messages = Message.objects.raw(query)
+
+    context = {
+        'messages': messages,
+    }
+    
+    return render(request, 'search.html', context)

@@ -1,0 +1,34 @@
+<!-- templates/search.html -->
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+<h2>Search results: </h2>
+<table class="search-table">
+  <tr class="search-table">
+    <th class="search-table">
+      From:
+    </th>
+    <th class="search-table">
+      Content
+    </th>
+  </tr>
+  {% for message in messages %}
+    <tr class="search-table">
+      <td class="search-table">
+        {{ message.sender }}
+      </td>
+      <td class="search-table">
+        {{ message.message_content }}
+      </td>
+    </tr>
+  {% endfor %}
+  </tr>
+
+</table>
+
+{% endif %}
+{% endblock %}

@@ -9,6 +9,11 @@
 
 {% if messages %}
 <h3>Your messages:</h3>
+<form action="search/">
+  <label>Search messages:</label>
+  <input type="search" name="query"/>
+  <button type="submit">Search</button>
+</form>
 <table>
   {% for message in messages %}
   <tr>
