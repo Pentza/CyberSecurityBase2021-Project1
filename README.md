@@ -110,6 +110,21 @@ Outdated components might have known security issues or they're unsupported. Thi
 
 ---
 
+### [CSRF](https://owasp.org/www-community/attacks/csrf) - Cross Site Request Forgery
+
+Csrf is not in the top-ten anymore but I thought it would be good to showcase as it was part of the course. 
+
+It's an attack that forces an end user to execute unwanted actions on a web application in which they are currently authenticated. 
+
+Somehow I couldn't bypass Djangos string escapes but by using @csrf_exempt decorators you could have CSRF vulnerabilities, for example:
+```html
+<img src="http://127.0.0.1:8000/delete_message/?id=78"  alt="" style="width:1;height:1;">
+```
+Example [csrf.html](https://github.com/Pentza/CyberSecurityBase2021-Project1/blob/main/csrf.html).
+
+**Fix:** Add @csrf_protect decorators to views and don't use @csrf_exempt decorator if not needed. 
+
+---
 
 
 
