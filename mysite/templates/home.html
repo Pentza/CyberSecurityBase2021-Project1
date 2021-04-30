@@ -41,7 +41,7 @@
 
 <h3>Send message</h3>
 <form method="POST" action="send_message/">
-  
+  <!-- {% csrf_token %} -->
   <span>Receiver:</span><br />
   <select name="receiver">
     {% for user in users %}
