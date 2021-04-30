@@ -72,6 +72,17 @@ We can see requests and responses from browser's dev tool. And as you log in you
 
 ---
 
+### [A6:2017](https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration) - Security Misconfiguration
+
+Attackers will often attempt to exploit unpatched flaws or access default accounts, unused pages, unprotected files and directories, etc to gain unauthorized access or knowledge of the system.
+
+In the application config.settings SECRET_KEY is visible and DEBUG is on. This could lead to privilege escalation and remote code execution vulnerabilities.
+There is also error handling that reveals stack traces that reveal informative messages to users. 
+
+**Fix:** Use latest patches, review and update security configurations and hanle errors correctly. Remember to hide your secret key and switch DEBUG off when pushing to production.  
+
+---
+
 ### [A7:2017](https://owasp.org/www-project-top-ten/2017/A7_2017-Cross-Site_Scripting_(XSS)) - Cross-Site Scripting (XSS)
 
 The application includes unvalidated and unescaped user input as part of HTML output. Attacker can send javascript code as a message to other users and execute it in the victim's browser.
@@ -98,6 +109,9 @@ Outdated components might have known security issues or they're unsupported. Thi
 **Fix:** Make sure to use supported and latest components and remove all unused stuff, for example  dependencies. 
 
 ---
+
+
+
 
 
 
