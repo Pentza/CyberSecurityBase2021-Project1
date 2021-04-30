@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from .models import Message
 from django.contrib.auth.decorators import login_required
 from django.db import connection
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -18,12 +19,14 @@ def homePageView(request):
         }
     return render(request, 'home.html', context)
 
+
 @login_required
+@csrf_exempt
 def sendMessageView(request):
     sender = User.objects.get(username=request.user)
     receiver = request.POST.get('receiver')
     content = request.POST.get('message')
-    
+
     Message.objects.create(sender=sender, receiver=receiver, message_content=content)
     
     return redirect('/')
