@@ -61,7 +61,6 @@ To use this tool:
 
 As this application has users and messages, the most sensitive data is user password. Using protocols like HTTP, data is trasmitted in plain text, thus making man-in-the-middle attacks possible. 
 
-```
 **Fix:** Use HTTPS -protocol
 
 ---
