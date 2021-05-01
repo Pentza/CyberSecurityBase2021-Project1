@@ -61,12 +61,6 @@ To use this tool:
 
 As this application has users and messages, the most sensitive data is user password. Using protocols like HTTP, data is trasmitted in plain text, thus making man-in-the-middle attacks possible. 
 
-We can see requests and responses from browser's dev tool. And as you log in you can see formed data in plain text. 
-
-```
-1. Open browsers dev tools and network tab (usually F12)
-2. Log in 
-3. In the network tab you should see POST request to '?next=/' and in the bottom below request headers you should see Form data and credentials in plain text. 
 ```
 **Fix:** Use HTTPS -protocol
 
